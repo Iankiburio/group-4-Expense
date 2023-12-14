@@ -6,7 +6,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///expenses.db'  # Update as needed
 db.init_app(app)
 
-@app.before_first_request
 def create_tables():
     db.create_all()
 
