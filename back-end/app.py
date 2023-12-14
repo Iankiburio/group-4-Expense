@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify, make_response
 from models import db, Expense
+from flask_migrate import Migrate
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///expenses.db'  # Update as needed
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///expenses.db' 
+migrate = Migrate(app, db)
 db.init_app(app)
 
 def create_tables():
