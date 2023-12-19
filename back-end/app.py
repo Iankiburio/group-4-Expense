@@ -13,9 +13,11 @@ db = SQLAlchemy(app)
 
 class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    category= db.Column(db.String(255), nullable = False)
     description = db.Column(db.String(255), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     date_added = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+
 
 db.drop_all()
 db.create_all()
@@ -30,12 +32,15 @@ def login():
 @app.route('/expenses', methods=['GET'])
 def get_expenses():
     expenses = Expense.query.all()
-    return jsonify([{'id': expense.id, 'description': expense.description, 'amount': expense.amount, 'date_added': expense.date_added} for expense in expenses])
+    return jsonify([{'id': expense.id, 'description': expense.description, 'amount': expense.amount, 'date_added': expense.date_added, 'category': expense.category} for expense in expenses])
 
 @app.route('/expenses', methods=['POST'])
 def add_expense():
     data = request.get_json()
-    new_expense = Expense(description=data['description'], amount=data['amount'], date_added=datetime.utcnow())
+    if not all(key in data for key in ['description', 'amount', 'category']):
+        return jsonify({'error': 'Missing data'}), 400
+
+    new_expense = Expense(description=data['description'], amount=data['amount'], category=data['category'], date_added=datetime.utcnow())
     db.session.add(new_expense)
     db.session.commit()
     return jsonify({'message': 'Expense added successfully'})
