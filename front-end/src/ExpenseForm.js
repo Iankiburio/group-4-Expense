@@ -7,6 +7,7 @@ const ExpenseForm = () => {
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('')
   const history = useHistory();
 
   const handleSubmit = async (e) => {
@@ -18,6 +19,7 @@ const ExpenseForm = () => {
         category,
         description,
         amount: parseFloat(amount),
+        paymentMethod,
         user_id: 1,
         category_id: 1,
       };
@@ -39,12 +41,12 @@ const ExpenseForm = () => {
           Category:
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
             <option value="">Select a category</option>
-            <option value="groceries">Food</option>
-            <option value="transport">Transport</option>
-            <option value="utilities">Utilities</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="grooming">Grooming</option>
-            <option value="health">Health</option>
+            <option value="Groceries">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Grooming">Grooming</option>
+            <option value="Health">Health</option>
             {/* Add more categories as needed */}
           </select>
         </label>
@@ -59,6 +61,20 @@ const ExpenseForm = () => {
           <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
         </label>
         <br />
+        <label>
+          Payment Method:
+          <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
+            <option value="">Select a payment method</option>
+            <option value="Cash">Cash</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Mpesa">Mpesa</option>
+            <option value="Airtel Money">Airtel Money</option>
+            {/* Add more payment methods as needed */}
+          </select>
+        </label>
+        <br />
+
+
         <button type="submit">Submit</button>
       </form>
     </div>

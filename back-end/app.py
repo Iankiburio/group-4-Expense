@@ -17,6 +17,21 @@ class Expense(db.Model):
     description = db.Column(db.String(255), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     date_added = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    payment_method_id = db.Column(db.Integer, db.ForeignKey('payment_method.id'))
+    payment_method = db.relationship('PaymentMethod')
+
+class PaymentMethod(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    method = db.Column(db.String(50), nullable=False)
+
+# Pre-populate the PaymentMethod table with the payment methods
+@app.before_first_request
+def create_payment_methods():
+    if not PaymentMethod.query.first():
+        methods = ['Cash', 'Credit Card', 'Mpesa', 'Airtel Money']
+        for method in methods:
+            db.session.add(PaymentMethod(method=method))
+        db.session.commit()
 
 
 db.drop_all()

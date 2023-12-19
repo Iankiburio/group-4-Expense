@@ -39,12 +39,12 @@ const ExpenseList = () => {
       <ul>
         {expenses.map((expense) => (
           <li key={expense.id}>
-            {expense.description} - ${expense.amount} - {new Date(expense.date_added).toLocaleDateString()}
+            {expense.category}-{expense.description} - ${expense.amount} - Payment Method: {expense.paymentMethod} - {new Date(expense.date_added).toLocaleDateString()} 
             <button onClick={() => handleDelete(expense.id)}>Delete</button>
           </li>
         ))}
       </ul>
-      <p>Total Expense: ${totalExpense}</p>
+      <p>Total Expense: Kes{totalExpense}</p>
 
       {/* Button to navigate to the expense form */}
       <Link to="/expenses/new">
