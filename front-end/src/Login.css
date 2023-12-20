@@ -1,0 +1,57 @@
+
+/* Login.css */
+
+.login-page {
+  display: flex;
+  flex-direction: column; /* Align items in a column */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black; /* Set the background color to black */
+}
+
+.containerz, .logo {
+  width: 400px; /* Set the width of the container and the logo */
+}
+
+.logo {
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 0; /* Remove margin between the logo and the form */
+}
+
+.login-form {
+  background-color: white; /* Set the background color of the form */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #08af19; /* Set the text color to greenish */
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #08af19; /* Set the background color to greenish */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0a7d14; /* Darker greenish color on hover */
+}
