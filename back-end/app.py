@@ -12,12 +12,15 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+
 class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(255), nullable=False)
+    payment_method = db.Column(db.String(255), nullable=True)  # Updated to allow NULL for payment_method
     description = db.Column(db.String(255), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     date_added = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -54,7 +57,17 @@ def login():
 @app.route('/expenses', methods=['GET'])
 def get_expenses():
     expenses = Expense.query.all()
-    return jsonify([{'id': expense.id, 'description': expense.description, 'amount': expense.amount, 'date_added': expense.date_added, 'category': expense.category} for expense in expenses])
+    return jsonify([
+        {
+            'id': expense.id,
+            'description': expense.description,
+            'amount': expense.amount,
+            'date_added': expense.date_added,
+            'category': expense.category,
+            'payment_method': expense.payment_method  # Include payment method in the response
+        }
+        for expense in expenses
+    ])
 
 @app.route('/expenses', methods=['POST'])
 def add_expense():
@@ -62,7 +75,13 @@ def add_expense():
     if not all(key in data for key in ['description', 'amount', 'category']):
         return jsonify({'error': 'Missing data'}), 400
 
-    new_expense = Expense(description=data['description'], amount=data['amount'], category=data['category'], date_added=datetime.utcnow())
+    new_expense = Expense(
+        description=data['description'],
+        amount=data['amount'],
+        category=data['category'],
+        payment_method=data.get('payment_method'),  # Include payment_method here
+        date_added=datetime.utcnow()
+    )
     db.session.add(new_expense)
     db.session.commit()
     return jsonify({'message': 'Expense added successfully'})

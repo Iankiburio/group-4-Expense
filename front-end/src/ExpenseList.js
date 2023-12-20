@@ -41,7 +41,7 @@ const ExpenseList = () => {
       <ul>
         {expenses.map((expense) => (
           <li key={expense.id}>
-            {expense.category} - {expense.description} - {expense.amount}Kshs - {new Date(expense.date_added).toLocaleDateString()}
+            {expense.category} - {expense.description} - Payment Method: {expense.payment_method} - {expense.amount}Kshs - {new Date(expense.date_added).toLocaleDateString()} 
             <button onClick={() => handleDelete(expense.id)}>Delete</button>
           </li>
         ))}
