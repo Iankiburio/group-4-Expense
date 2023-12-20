@@ -1,61 +1,62 @@
-/* src/components/ExpenseList.css */
-
-/* Container styles */
 .containers {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Header styles */
-  h2 {
-    color: #333;
-  }
-  
-  /* List styles */
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    margin-bottom: 10px;
-  }
-  
-  /* Button styles */
-  button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Total expense styles */
-  p {
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  
-  /* Link button styles */
-  .link-button {
-    text-decoration: none;
-  }
-  
-  .link-button button {
-    background-color: #008CBA;
-  }
-  
-  .link-button button:hover {
-    background-color: #0077a3;
-  }
-  
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.containers h2 {
+  text-align: center;
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+li button:hover {
+  background-color: #c0392b;
+}
+
+.link-button button, .containers > button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.link-button button:hover, .containers > button:hover {
+  background-color: #2980b9;
+}
+
+p {
+  text-align: center;
+  color: #333;
+  font-size: 18px;
+}

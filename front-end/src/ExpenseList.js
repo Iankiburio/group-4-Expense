@@ -22,6 +22,7 @@ const ExpenseList = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/expenses/${id}`);
+      setExpenses(expenses.filter(expense => expense.id !== id));
     } catch (error) {
       console.error('Error deleting expense:', error);
     }

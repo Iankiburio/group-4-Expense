@@ -1,54 +1,62 @@
-/*ExpenseForm.css */
+.expense-form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f8f8f8;
+}
 
-/* Style for the form container */
-div {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.expense-form-heading {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.expense-form-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.expense-form-select,
+.expense-form-input {
+  width: 100%;
+  padding: 10px 15px;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* Added to handle padding and width calculations */
+}
+
+.expense-form-input:focus,
+.expense-form-select:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.expense-form-button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.expense-form-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .expense-form-container {
+    width: 90%;
+    margin: 20px auto;
   }
-  
-  /* Style for the form heading */
-  h2 {
-    text-align: center;
-    color: #333;
-  }
-  
-  /* Style for form labels */
-  label {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  /* Style for form inputs and select */
-  input,
-  select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-  }
-  
-  /* Style for the submit button */
-  button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  /* Style for the submit button on hover */
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Optional: Style for error messages */
-  .error-message {
-    color: #ff0000;
-    margin-top: 8px;
-  }
-  
+}

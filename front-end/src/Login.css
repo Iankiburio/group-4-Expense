@@ -1,57 +1,82 @@
-
-/* Login.css */
-
-.login-page {
+.login {
   display: flex;
-  flex-direction: column; /* Align items in a column */
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: black; /* Set the background color to black */
+  background-color: #f4f4f4;
 }
 
-.containerz, .logo {
-  width: 400px; /* Set the width of the container and the logo */
+.login__container {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%;
 }
 
-.logo {
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 0; /* Remove margin between the logo and the form */
+.login__logo {
+  display: block;
+  margin: 0 auto 20px;
+  width: 150px;
+  height: auto;
 }
 
-.login-form {
-  background-color: white; /* Set the background color of the form */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+.login__form {
+  display: flex;
+  flex-direction: column;
 }
 
-.form-group {
+.login__form-group {
   margin-bottom: 15px;
 }
 
-label {
+.login__label {
   display: block;
-  margin-bottom: 8px;
-  color: #08af19; /* Set the text color to greenish */
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: bold;
 }
 
-input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-}
-
-button {
+.login__input {
   width: 100%;
   padding: 10px;
-  background-color: #08af19; /* Set the background color to greenish */
-  color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.login__input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.login__button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.2s;
 }
 
-button:hover {
-  background-color: #0a7d14; /* Darker greenish color on hover */
+.login__button:hover {
+  background-color: #0056b3;
+}
+
+.login__error {
+  color: #ff3860;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .login__container {
+    width: 100%;
+    padding: 20px;
+  }
 }

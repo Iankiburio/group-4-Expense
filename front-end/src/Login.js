@@ -1,18 +1,19 @@
-// Login.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './Login.css';
 import Logo from './logo.png';
 
 const Login = ({ setUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(''); // New state for error message
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(''); // Reset error message on new submission
 
     try {
       const response = await axios.post('http://localhost:5000/login', {
@@ -21,11 +22,11 @@ const Login = ({ setUser }) => {
       });
 
       setUser(response.data);
-
-      // Redirect to the expenses list
       history.push('/expenses');
     } catch (error) {
       console.error('Error logging in:', error);
+      // Set the error message for display
+      setErrorMessage('Invalid username or password'); // Customize this message as needed
     }
   };
 
@@ -36,6 +37,7 @@ const Login = ({ setUser }) => {
 
         <div className="login__form">
           <form onSubmit={handleSubmit}>
+            {errorMessage && <div className="login__error">{errorMessage}</div>} {/* Display error message */}
             <div className="login__form-group">
               <label htmlFor="username" className="login__label">
                 Username
